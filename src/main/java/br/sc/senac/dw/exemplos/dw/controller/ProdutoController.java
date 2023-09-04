@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.sc.senac.dw.exemplos.dw.exception.CampoInvalidoException;
 import br.sc.senac.dw.exemplos.dw.model.entidade.Produto;
+import br.sc.senac.dw.exemplos.dw.model.seletor.ProdutoSeletor;
 import br.sc.senac.dw.exemplos.dw.service.ProdutoService;
 
 @RestController
@@ -33,7 +34,7 @@ public class ProdutoController {
 	 * @return a lista de todas os produtos
 	 */
 	@GetMapping(path = "/todos")
-	public List<Produto> listarTodosProdutos() {
+	public List<Produto> listarTodos() {
 		return produtoService.listarTodos();
 	}
 
@@ -57,6 +58,11 @@ public class ProdutoController {
 	@PostMapping
 	public Produto salvar(@RequestBody Produto novoProduto) throws CampoInvalidoException {
 		return produtoService.inserir(novoProduto);
+	}
+
+	@PostMapping("/filtro")
+	public List<Produto> listarComSeletor(@RequestBody ProdutoSeletor seletor) {
+		return produtoService.listarComSeletor(seletor);
 	}
 
 	/**

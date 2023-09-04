@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 //Anotação do lombok para gerar getters, setters e construtor vazio (não descobri ainda porque não gerou o construtor com todos os argumentos)
@@ -26,25 +28,27 @@ public class Produto {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
-	private String fabricante;
 	private double valor;
 	private double peso;
 	@Column(name = "data_cadastro")
 	private LocalDate data;
 
-	public Produto() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	@ManyToOne
+	@JoinColumn(name = "id_fabricante")
+	private Fabricante fabricanteDoProduto;
 
-	public Produto(Integer id, String nome, String fabricante, double valor, double peso, LocalDate data) {
+	public Produto(Integer id, String nome, Fabricante fabricanteDoProduto, double valor, double peso, LocalDate data) {
 		super();
 		this.id = id;
 		this.nome = nome;
-		this.fabricante = fabricante;
 		this.valor = valor;
 		this.peso = peso;
 		this.data = data;
+		this.fabricanteDoProduto = fabricanteDoProduto;
+	}
+
+	public Produto() {
+		super();
 	}
 
 	public Integer getId() {
@@ -61,14 +65,6 @@ public class Produto {
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public String getFabricante() {
-		return fabricante;
-	}
-
-	public void setFabricante(String fabricante) {
-		this.fabricante = fabricante;
 	}
 
 	public double getValor() {
@@ -95,4 +91,11 @@ public class Produto {
 		this.data = data;
 	}
 
+	public Fabricante getFabricanteDoProduto() {
+		return fabricanteDoProduto;
+	}
+
+	public void setFabricanteDoProduto(Fabricante fabricanteDoProduto) {
+		this.fabricanteDoProduto = fabricanteDoProduto;
+	}
 }

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import br.sc.senac.dw.exemplos.dw.exception.CampoInvalidoException;
 import br.sc.senac.dw.exemplos.dw.model.entidade.Produto;
 import br.sc.senac.dw.exemplos.dw.model.repository.ProdutoRepository;
+import br.sc.senac.dw.exemplos.dw.model.seletor.ProdutoSeletor;
 import jakarta.transaction.Transactional;
 
 @Service
@@ -15,6 +16,7 @@ public class ProdutoService {
 	@Autowired
 	private ProdutoRepository produtoRepository;
 
+	// Listagem de métodos
 	@Transactional
 	public List<Produto> listarTodos() {
 		return produtoRepository.findAll();
@@ -34,7 +36,6 @@ public class ProdutoService {
 		return produtoRepository.save(produtoParaAtualizar);
 	}
 
-	
 	public boolean excluir(Integer id) {
 		produtoRepository.deleteById(id.longValue());
 		return true;
@@ -43,7 +44,8 @@ public class ProdutoService {
 	private void validarCamposObrigatorios(Produto produto) throws CampoInvalidoException {
 		String mensagemValidacao = "";
 		mensagemValidacao += validarCampoString(produto.getNome(), "nome");
-		mensagemValidacao += validarCampoString(produto.getFabricante(), "fabricante");
+		// mensagemValidacao += validarCampoString(produto.getFabricante(),
+		// "fabricante");
 		mensagemValidacao += validarCampoDouble(produto.getValor(), "valor");
 		mensagemValidacao += validarCampoDouble(produto.getPeso(), "peso");
 
@@ -65,6 +67,11 @@ public class ProdutoService {
 			return "Informe o " + nomeCampo + " \n";
 		}
 		return "";
+	}
+
+	public List<Produto> listarComSeletor(ProdutoSeletor seletor) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
