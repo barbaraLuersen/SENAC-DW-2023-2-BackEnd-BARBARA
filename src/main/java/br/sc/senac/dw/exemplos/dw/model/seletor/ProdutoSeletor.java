@@ -2,30 +2,17 @@ package br.sc.senac.dw.exemplos.dw.model.seletor;
 
 import java.time.LocalDate;
 
-public abstract class ProdutoSeletor extends BaseSeletor {
+public class ProdutoSeletor extends BaseSeletor {
 
 	private String nome;
-	private String fabricante;
+	private String nomeFabricante;
 	private Double valorMinimo;
 	private Double valorMaximo;
 	private Double pesoMinimo;
 	private Double pesoMaximo;
 	private LocalDate dataCadastroInicial;
 	private LocalDate dataCadastroFinal;
-
-	public ProdutoSeletor(int pagina, int limite, String nome, String fabricante, Double valorMinimo,
-			Double valorMaximo, Double pesoMinimo, Double pesoMaximo, LocalDate dataCadastroInicial,
-			LocalDate dataCadastroFinal) {
-		super(pagina, limite);
-		this.nome = nome;
-		this.fabricante = fabricante;
-		this.valorMinimo = valorMinimo;
-		this.valorMaximo = valorMaximo;
-		this.pesoMinimo = pesoMinimo;
-		this.pesoMaximo = pesoMaximo;
-		this.dataCadastroInicial = dataCadastroInicial;
-		this.dataCadastroFinal = dataCadastroFinal;
-	}
+	private String cnpjFabricante;
 
 	public String getNome() {
 		return nome;
@@ -35,12 +22,12 @@ public abstract class ProdutoSeletor extends BaseSeletor {
 		this.nome = nome;
 	}
 
-	public String getFabricante() {
-		return fabricante;
+	public String getNomeFabricante() {
+		return nomeFabricante;
 	}
 
-	public void setFabricante(String fabricante) {
-		this.fabricante = fabricante;
+	public void setNomeFabricante(String nomeFabricante) {
+		this.nomeFabricante = nomeFabricante;
 	}
 
 	public Double getValorMinimo() {
@@ -89,5 +76,13 @@ public abstract class ProdutoSeletor extends BaseSeletor {
 
 	public void setDataCadastroFinal(LocalDate dataCadastroFinal) {
 		this.dataCadastroFinal = dataCadastroFinal;
+	}
+
+	public String getCnpjFabricante() {
+		return cnpjFabricante;
+	}
+
+	public void setCnpjFabricante(String cnpjFabricante) {
+		this.cnpjFabricante = cnpjFabricante;
 	}
 }

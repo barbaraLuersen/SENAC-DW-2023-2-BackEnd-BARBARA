@@ -38,6 +38,11 @@ public class ProdutoController {
 		return produtoService.listarTodos();
 	}
 
+	// NO SERVICE:
+	// public List<Produto> listarTodos() {
+	// return produtoRepository.findAll();
+	// }
+
 	/**
 	 * Método GET Parâmetro id foi enviado via URL
 	 * 

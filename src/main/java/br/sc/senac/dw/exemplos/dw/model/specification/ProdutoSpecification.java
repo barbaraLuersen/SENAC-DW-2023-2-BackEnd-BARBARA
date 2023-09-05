@@ -32,19 +32,19 @@ public class ProdutoSpecification {
 			List<Predicate> predicates = new ArrayList<>();
 
 			// COMO FILTRAR "PRODUTO.NOME"
-			if (seletor.getNome() != null) {
+			if (seletor.getNome() != null && seletor.getNome().isEmpty()) {
 				// WHERE/AND COLUNA OPERADOR VALOR
 				// WHERE nome like %Café%
 				predicates.add(cb.like(cb.lower(root.get("nome")), "%" + seletor.getNome().toLowerCase() + "%"));
 			}
 
 			// COMO FILTRAR POR "FABRICANTES.NOME"
-			if (seletor.getFabricante() != null) {
+			if (seletor.getNomeFabricante() != null && seletor.getNomeFabricante().isEmpty()) {
 				// WHERE p.fabricante like '%Rider%'
 				// WHERE f.nome like '%Rider%'
 				// JPQL = Java Persistence Query Language
 				predicates.add(
-						cb.like(root.join("fabricanteDoProduto").get("nome"), "%" + seletor.getFabricante() + "%"));
+						cb.like(root.join("fabricanteDoProduto").get("nome"), "%" + seletor.getNomeFabricante() + "%"));
 			}
 
 			// COMO FILTRAR POR "PRODUTO.PESO"
@@ -72,7 +72,7 @@ public class ProdutoSpecification {
 			}
 
 			// COMO FILTRAR POR "PRODUTO.DATA"
-			if (seletor.getDataCadastroInicial() != null & seletor.getDataCadastroFinal() != null) {
+			if (seletor.getDataCadastroInicial() != null && seletor.getDataCadastroFinal() != null) {
 				// WHERE data BETWEEN min AND max
 				predicates.add(
 						cb.between(root.get("data"), seletor.getDataCadastroInicial(), seletor.getDataCadastroFinal()));
@@ -85,9 +85,11 @@ public class ProdutoSpecification {
 			}
 
 			// COMO FILTRAR POR "FABRICANTE.CNPJ"
-			if (seletor.getFabricante() != null) {
-				predicates.add(
-						cb.like(root.join("fabricanteDoProduto").get("cnpj"), "%" + seletor.getFabricante() + "%"));
+			if (seletor.getCnpjFabricante() != null && seletor.getCnpjFabricante().isEmpty()) {
+				// WHERE p.fabricante like '%Rider%'
+				// WHERE f.nome like '%Rider%'
+				// JPQL = Java Persistence Query Language
+				predicates.add(cb.equal(root.join("fabricanteDoProduto").get("cnpj"), seletor.getCnpjFabricante()));
 			}
 
 			return cb.and(predicates.toArray(new Predicate[0]));
