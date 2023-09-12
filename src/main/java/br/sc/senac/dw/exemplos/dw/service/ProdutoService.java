@@ -43,6 +43,8 @@ public class ProdutoService {
 		return true;
 	}
 
+	// TODO public boolean excluirPorCpf
+
 	private void validarCamposObrigatorios(Produto produto) throws CampoInvalidoException {
 		String mensagemValidacao = "";
 		mensagemValidacao += validarCampoString(produto.getNome(), "nome");

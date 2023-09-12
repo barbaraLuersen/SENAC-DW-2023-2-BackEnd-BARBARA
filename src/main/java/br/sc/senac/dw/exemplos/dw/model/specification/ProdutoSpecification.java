@@ -32,14 +32,14 @@ public class ProdutoSpecification {
 			List<Predicate> predicates = new ArrayList<>();
 
 			// COMO FILTRAR "PRODUTO.NOME"
-			if (seletor.getNome() != null && seletor.getNome().isEmpty()) {
+			if (seletor.getNome() != null && !seletor.getNome().isEmpty()) {
 				// WHERE/AND COLUNA OPERADOR VALOR
 				// WHERE nome like %Café%
 				predicates.add(cb.like(cb.lower(root.get("nome")), "%" + seletor.getNome().toLowerCase() + "%"));
 			}
 
 			// COMO FILTRAR POR "FABRICANTES.NOME"
-			if (seletor.getNomeFabricante() != null && seletor.getNomeFabricante().isEmpty()) {
+			if (seletor.getNomeFabricante() != null && !seletor.getNomeFabricante().isEmpty()) {
 				// WHERE p.fabricante like '%Rider%'
 				// WHERE f.nome like '%Rider%'
 				// JPQL = Java Persistence Query Language
@@ -85,7 +85,7 @@ public class ProdutoSpecification {
 			}
 
 			// COMO FILTRAR POR "FABRICANTE.CNPJ"
-			if (seletor.getCnpjFabricante() != null && seletor.getCnpjFabricante().isEmpty()) {
+			if (seletor.getCnpjFabricante() != null && !seletor.getCnpjFabricante().isEmpty()) {
 				// WHERE p.fabricante like '%Rider%'
 				// WHERE f.nome like '%Rider%'
 				// JPQL = Java Persistence Query Language
