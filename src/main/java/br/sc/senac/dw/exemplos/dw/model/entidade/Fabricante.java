@@ -20,16 +20,23 @@ public class Fabricante {
 	private Integer id;
 	private String nome;
 	private String cnpj;
+	private String cidade;
+	private String cep;
+	private String uf;
 
 	@JsonBackReference
 	@OneToMany(mappedBy = "fabricanteDoProduto")
 	private List<Produto> produtos;
 
-	public Fabricante(Integer id, String nome, String cnpj, List<Produto> produtos) {
+	public Fabricante(Integer id, String nome, String cnpj, String cidade, String cep, String uf,
+			List<Produto> produtos) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.cnpj = cnpj;
+		this.cidade = cidade;
+		this.cep = cep;
+		this.uf = uf;
 		this.produtos = produtos;
 	}
 
@@ -61,6 +68,30 @@ public class Fabricante {
 		this.cnpj = cnpj;
 	}
 
+	public String getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
+
+	public String getCep() {
+		return cep;
+	}
+
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
+
+	public String getUf() {
+		return uf;
+	}
+
+	public void setUf(String uf) {
+		this.uf = uf;
+	}
+
 	public List<Produto> getProdutos() {
 		return produtos;
 	}
@@ -68,4 +99,5 @@ public class Fabricante {
 	public void setProdutos(List<Produto> produtos) {
 		this.produtos = produtos;
 	}
+
 }
