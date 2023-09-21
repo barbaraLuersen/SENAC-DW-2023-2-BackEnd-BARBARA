@@ -26,7 +26,7 @@ public class FabricanteSpecification {
 				// WHERE p.fabricante like '%Rider%'
 				// WHERE f.nome like '%Rider%'
 				// JPQL = Java Persistence Query Language
-				predicates.add(cb.equal(root.join("fabricantes").get("cnpj"), seletor.getCnpj()));
+				predicates.add(cb.equal(root.get("cnpj"), seletor.getCnpj()));
 			}
 
 			// FILTRAR "FABRICANTE.CIDADE"
@@ -38,13 +38,13 @@ public class FabricanteSpecification {
 			// FILTRAR "FABRICANTE.CEP"
 			if (seletor.getCep() != null && !seletor.getCep().isEmpty()) {
 				// WHERE/AND COLUNA OPERADOR VALOR
-				predicates.add(cb.equal(root.join("fabricantes").get("cep"), seletor.getCnpj()));
+				predicates.add(cb.equal(root.get("cep"), seletor.getCnpj()));
 			}
 
 			// FILTRAR "FABRICANTE.UF"
 			if (seletor.getUf() != null && !seletor.getUf().isEmpty()) {
 				// WHERE/AND COLUNA OPERADOR VALOR
-				predicates.add(cb.equal(root.join("fabricantes").get("uf"), seletor.getCnpj()));
+				predicates.add(cb.equal(root.get("uf"), seletor.getCnpj()));
 			}
 
 			return cb.and(predicates.toArray(new Predicate[0]));
