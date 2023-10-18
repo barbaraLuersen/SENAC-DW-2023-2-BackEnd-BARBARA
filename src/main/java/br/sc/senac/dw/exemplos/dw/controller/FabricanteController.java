@@ -36,9 +36,7 @@ public class FabricanteController {
 	
 	@GetMapping(path = "/todos")
 	public List<Fabricante> listarTodos() {
-		//TODO
-		//return fabricanteService.listarTodos();
-		return null;
+			return fabricanteService.listarTodos();
 	}
 
 }

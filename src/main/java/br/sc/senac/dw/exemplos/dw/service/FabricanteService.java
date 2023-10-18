@@ -52,4 +52,8 @@ public class FabricanteService {
 		return fabricanteRepository.findAll(specification);
 	}
 
+	public List<Fabricante> listarTodos() {
+		return fabricanteRepository.findAll();
+	}
+
 }
