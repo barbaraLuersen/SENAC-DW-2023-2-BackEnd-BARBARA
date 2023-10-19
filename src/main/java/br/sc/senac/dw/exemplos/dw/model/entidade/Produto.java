@@ -31,19 +31,20 @@ public class Produto {
 	private double valor;
 	private double peso;
 	@Column(name = "data_cadastro")
-	private LocalDate data;
+	private LocalDate dataCadastro;
 
 	@ManyToOne
 	@JoinColumn(name = "id_fabricante")
 	private Fabricante fabricanteDoProduto;
 
-	public Produto(Integer id, String nome, Fabricante fabricanteDoProduto, double valor, double peso, LocalDate data) {
+	public Produto(Integer id, String nome, Fabricante fabricanteDoProduto, double valor, double peso,
+			LocalDate dataCadastro) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.valor = valor;
 		this.peso = peso;
-		this.data = data;
+		this.dataCadastro = dataCadastro;
 		this.fabricanteDoProduto = fabricanteDoProduto;
 	}
 
@@ -83,12 +84,12 @@ public class Produto {
 		this.peso = peso;
 	}
 
-	public LocalDate getData() {
-		return data;
+	public LocalDate getDataCadastro() {
+		return dataCadastro;
 	}
 
-	public void setData(LocalDate data) {
-		this.data = data;
+	public void setDataCadastro(LocalDate dataCadastro) {
+		this.dataCadastro = dataCadastro;
 	}
 
 	public Fabricante getFabricanteDoProduto() {
