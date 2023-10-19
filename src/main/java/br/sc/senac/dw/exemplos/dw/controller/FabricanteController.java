@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.sc.senac.dw.exemplos.dw.exception.CampoInvalidoException;
 import br.sc.senac.dw.exemplos.dw.model.entidade.Fabricante;
-import br.sc.senac.dw.exemplos.dw.model.entidade.Produto;
 import br.sc.senac.dw.exemplos.dw.model.seletor.FabricanteSeletor;
 import br.sc.senac.dw.exemplos.dw.service.FabricanteService;
 
